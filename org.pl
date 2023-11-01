@@ -21,3 +21,18 @@ my $download_folder = $user . "Downloads" . "/";
 # Open directory
 opendir my $dir, $download_folder or die "Cannot open directory: $!";
 
+# Read all files in DL directory
+my @files = readdir $dir;
+closedir $dir;
+
+## Filter for file type from @files.
+my @image_files = grep(/.png/ || /.jpg/ || /.jpeg/, @files);
+my @mp4_files = grep(/.mp4/, @files);
+my @mp3_files = grep(/.mp3/, @files);
+my @txt_files = grep(/.txt/, @files);
+my @pdf_files = grep(/.pdf/, @files);
+my @ebook_files = grep(/.epub/ || /.mobi/, @files);
+my @csv_files = grep(/.csv/ || /.xls/ || /.xlsx/, @files);
+my @zip_files = grep(/.zip/, @files);
+
+
