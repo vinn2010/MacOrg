@@ -16,7 +16,7 @@ my $csv_staging = $user . '/Documents/staging/csv-staging/';
 my $zip_staging = $user . '/Documents/staging/zip-staging/';
 
 # Merge path to full absolute path
-my $download_folder = $user . "Downloads" . "/";
+my $download_folder = $user . "/Downloads" . "/";
 
 # Open directory
 opendir my $dir, $download_folder or die "Cannot open directory: $!";
@@ -41,7 +41,7 @@ sub moveFileByType {
   my $staging_path = $_[1];
 
   foreach my $file (@file_array) {
-    my $old = $full_path . $file;
+    my $old = $download_folder . $file;
     my $staging = $staging_path;
 
     move($old, $staging) or die "Move $old -> $staging failed: $!";
@@ -50,4 +50,13 @@ sub moveFileByType {
   };
 };
 
+# Move implementation
+moveFileByType(\@image_files, $image_staging); # passes array reference
+moveFileByType(\@mp4_files, $mp4_staging);
+moveFileByType(\@mp3_files, $mp3_staging);
+moveFileByType(\@txt_files, $txt_staging);
+moveFileByType(\@pdf_files, $pdf_staging);
+moveFileByType(\@ebook_files, $ebook_staging);
+moveFileByType(\@csv_files, $csv_staging);
+moveFileByType(\@zip_files, $zip_staging);
 
