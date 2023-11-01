@@ -35,4 +35,19 @@ my @ebook_files = grep(/.epub/ || /.mobi/, @files);
 my @csv_files = grep(/.csv/ || /.xls/ || /.xlsx/, @files);
 my @zip_files = grep(/.zip/, @files);
 
+# main Function
+sub moveFileByType {
+  my @file_array = @{$_[0]}; # required to take an array as an arg
+  my $staging_path = $_[1];
+
+  foreach my $file (@file_array) {
+    my $old = $full_path . $file;
+    my $staging = $staging_path;
+
+    move($old, $staging) or die "Move $old -> $staging failed: $!";
+
+    print "file: " . $file . " has been moved\n";
+  };
+};
+
 
