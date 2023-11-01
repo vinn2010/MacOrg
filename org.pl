@@ -26,7 +26,7 @@ my @files = readdir $dir;
 closedir $dir;
 
 ## Filter for file type from @files.
-my @image_files = grep(/.png/ || /.jpg/ || /.jpeg/, @files);
+my @image_files = grep(/.png/ || /.jpg/ || /.jpeg/ || /.svg/, @files);
 my @mp4_files = grep(/.mp4/, @files);
 my @mp3_files = grep(/.mp3/, @files);
 my @txt_files = grep(/.txt/, @files);
