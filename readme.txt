@@ -14,3 +14,8 @@
 
   # run every 3 hours
   0 */3 * * * perl /path/to/org.pl
+
+
+# general info
+  - tested with Mac M1 Pro
+  - Perl version v5.36.0
